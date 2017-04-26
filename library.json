@@ -1,0 +1,16 @@
+{
+    "name": "Fader",
+    "keywords": "led, dim, fade",
+    "description": "Simple helper library which can be used to dim/fade some leds on arduino.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/devilsray/Fader"
+    },
+    "version": "1.0.0",
+    "examples": "examples/*/*.ino",
+    "frameworks": "arduino",
+    "platforms": [
+        "atmelavr",
+        "espressif"
+    ]
+} 

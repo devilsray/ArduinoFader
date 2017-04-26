@@ -1,4 +1,4 @@
-# ArduinoFader
+# Fader
 
 Simple helper library which can be used to dim/fade some leds on arduino.
 
@@ -9,7 +9,7 @@ Simple helper library which can be used to dim/fade some leds on arduino.
 
 ## Cons:
 
-* when _sleep_ is used in main class, then the regulation process is brken during this time
+* when _sleep_ is used in main class, then the regulation process is broken during this time
 
 ## Usage:
 
@@ -25,5 +25,5 @@ __Used parameters:__
 * Pin
 * Regulation interval (40 is my favorite)
 * Max brightness to use. Depends on arduino model. Mostly 255 is possible. Default is 200 to save leds
-* This values defines the value which will be added during the dimm up process
-* This values defines the value which will be added during the dimm down process
+* This values defines the value which will be added during the dim up process
+* This values defines the value which will be added during the dim down process
