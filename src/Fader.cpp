@@ -4,16 +4,24 @@ Fader::Fader(const int _pin,
              const int _processIntervalMillis,
              const float _maxBrightness,
              const float _stepsUpPerProcess,
-             const float _stepsDownPerProcess)
+             const float _stepsDownPerProcess,
+             const int _channel)
     : pin(_pin),
       processIntervalMillis(_processIntervalMillis),
       maxBrightness(_maxBrightness),
       stepsUpPerProcess(_stepsUpPerProcess),
-      stepsDownPerProcess(_stepsDownPerProcess)
+      stepsDownPerProcess(_stepsDownPerProcess),
+      channel(_channel)
 {
   lightCurrentLevel = 0;
   lightTargetLevel = 0;
-  pinMode(pin, OUTPUT);
+
+  #ifdef ESP_H
+    ledcSetup(0, 5000, 8);
+    ledcAttachPin(pin, 0);
+  #else
+    pinMode(pin, OUTPUT);
+  #endif
 }
 
 void Fader::setLevel(const float _level)
@@ -58,6 +66,11 @@ void Fader::loop()
     #if defined DEBUG
         Serial.sprintf("Fader: level %i", lightCurrentLevel);
     #endif
-    analogWrite(pin, lightCurrentLevel);
+
+    #ifdef ESP_H
+      ledcWrite(channel, lightCurrentLevel);
+    #else
+      analogWrite(pin, lightCurrentLevel);
+    #endif
   }
 }
